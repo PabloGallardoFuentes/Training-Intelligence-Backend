@@ -3,7 +3,7 @@
 ## Objetivo de la fase
 Definir el problema real que el sistema intenta resolver antes de escribir código.
 
-## Pregunta núclero
+## Pregunta núcleo
 
 > Cuando termina una semana de entrenamiento, ¿mi carga está evolucionando de forma coherente o estoy acumulando fatiga sin darme cuenta?
 
