@@ -115,3 +115,6 @@ ISO week, fija no configurable
 - reduce ambigüedad
 - alinea con planificación real
 - simplifica tests
+
+## Estado final de la fase
+✔️ Fase cerrada
