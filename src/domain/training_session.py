@@ -4,9 +4,9 @@ from enum import Enum
 
 
 class Sport(str, Enum):
-    RUNNING = "run"
-    CYCLING = "bike"
-    SWIMMING = "swim"
+    RUN = "run"
+    BIKE = "bike"
+    SWIM = "swim"
 
 @dataclass(frozen = True)
 class TrainingSession:

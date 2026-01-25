@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import Dict
 
-from domain.training_session import TrainingSession
+from src.domain.training_session import TrainingSession
 
 def calculate_session_load(session: TrainingSession) -> int:
     """
