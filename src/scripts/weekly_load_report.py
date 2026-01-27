@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from src.domain.training_session import TrainingSession, Sport
+from src.models.training_session import TrainingSession, Sport
 from src.services.load_calculator import aggregate_weekly_load
 
 

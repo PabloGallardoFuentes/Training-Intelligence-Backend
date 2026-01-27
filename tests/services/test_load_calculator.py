@@ -1,11 +1,12 @@
 from datetime import date
 
-from src.domain.training_session import TrainingSession, Sport
+from src.models.training_session import TrainingSession, Sport
 from src.services.load_calculator import calculate_session_load, aggregate_weekly_load
 
 
 def test_calculate_session_load():
     session = TrainingSession(
+        id_user=1,
         date=date(2026, 1, 20),
         sport=Sport.RUN,
         duration_minutes=40,
@@ -18,9 +19,9 @@ def test_calculate_session_load():
 
 def test_aggregate_weekly_load_single_week():
     sessions = [
-        TrainingSession(date(2026, 1, 19), Sport.SWIM, 60, 3),  # W04
-        TrainingSession(date(2026, 1, 20), Sport.BIKE, 90, 4),  # W04
-        TrainingSession(date(2026, 1, 21), Sport.RUN, 45, 5),   # W04
+        TrainingSession(id_user=1, date=date(2026, 1, 19), sport=Sport.SWIM, duration_minutes=60, intensity=3),  # W04
+        TrainingSession(id_user=1, date=date(2026, 1, 20), sport=Sport.BIKE, duration_minutes=90, intensity=4),  # W04
+        TrainingSession(id_user=1, date=date(2026, 1, 21), sport=Sport.RUN, duration_minutes=45, intensity=5),   # W04
     ]
 
     weekly = aggregate_weekly_load(sessions)
@@ -31,9 +32,9 @@ def test_aggregate_weekly_load_single_week():
 
 def test_aggregate_weekly_load_by_sport():
     sessions = [
-        TrainingSession(date(2026, 1, 19), Sport.BIKE, 60, 3),
-        TrainingSession(date(2026, 1, 20), Sport.BIKE, 90, 4),
-        TrainingSession(date(2026, 1, 21), Sport.RUN, 45, 5),
+        TrainingSession(id_user=1, date=date(2026, 1, 19), sport=Sport.BIKE, duration_minutes=60, intensity=3),
+        TrainingSession(id_user=1, date=date(2026, 1, 20), sport=Sport.BIKE, duration_minutes=90, intensity=4),
+        TrainingSession(id_user=1, date=date(2026, 1, 21), sport=Sport.RUN, duration_minutes=45, intensity=5),
     ]
 
     weekly = aggregate_weekly_load(sessions)
@@ -44,8 +45,8 @@ def test_aggregate_weekly_load_by_sport():
 
 def test_sessions_in_different_weeks_are_separated():
     sessions = [
-        TrainingSession(date(2026, 1, 25), Sport.BIKE, 60, 3),  # W04 (domingo)
-        TrainingSession(date(2026, 1, 26), Sport.BIKE, 60, 3),  # W05 (lunes)
+        TrainingSession(id_user=1, date=date(2026, 1, 25), sport=Sport.BIKE, duration_minutes=60, intensity=3),  # W04 (domingo)
+        TrainingSession(id_user=1, date=date(2026, 1, 26), sport=Sport.BIKE, duration_minutes=60, intensity=3),  # W05 (lunes)
     ]
 
     weekly = aggregate_weekly_load(sessions)

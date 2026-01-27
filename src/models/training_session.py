@@ -10,6 +10,7 @@ class Sport(str, Enum):
 
 @dataclass(frozen = True)
 class TrainingSession:
+    id_user: int
     date: date
     sport: Sport
     duration_minutes: int
