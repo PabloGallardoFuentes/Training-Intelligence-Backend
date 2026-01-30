@@ -92,3 +92,19 @@ Porque entonces:
 Separarlos te da:\
 ✔️ claridad \
 ✔️ flexibilidad
+
+### Objetivo del servicio
+¿Cómo fue esta semana de entrenamiento para este usuario, en términos de carga?
+
+```text
+WeeklyLoadService
+-----------------
+Input:
+- user_id: int
+- iso_year: int
+- iso_week: int
+
+Output:
+- total_load: int
+- load_by_sport: dict[sport, int]
+```
