@@ -17,3 +17,14 @@ class TrainingSessionRepository:
             .all()
         )
         return [to_domain(r) for r in rows]
+    
+    def add_from_schema(self, id_user: int, schema) -> None:
+        session_orm = TrainingSessionORM(
+            id_user=id_user,
+            date=schema.date,
+            sport=schema.sport,
+            duration_minutes=schema.duration_minutes,
+            intensity=schema.intensity,
+        )
+        self.db.add(session_orm)
+        self.db.commit()

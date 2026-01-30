@@ -15,3 +15,6 @@ class TrainingSession:
     sport: Sport
     duration_minutes: int
     intensity: int  # Scale RPE from 1 to 10
+
+    def load(self) -> int:
+        return self.duration_minutes * self.intensity

@@ -5,6 +5,6 @@ from .base import Base
 
 
 class UserORM(Base):
-    __tablename__ = "users"
+    __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
