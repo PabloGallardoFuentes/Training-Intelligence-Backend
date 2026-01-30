@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from src.repositories.db import get_db
 from src.repositories.training_session_repository import TrainingSessionRepository
-from schemas.training_session import TrainingSessionCreate
+from src.schemas.training_session import TrainingSessionCreate
 
 router = APIRouter(prefix="/users/{user_id}/sessions", tags=["sessions"])
 

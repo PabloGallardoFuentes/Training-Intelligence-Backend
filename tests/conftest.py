@@ -1,5 +1,6 @@
+from fastapi.testclient import TestClient
 import pytest
-from sqlalchemy import create_engine
+from sqlalchemy import StaticPool, create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import date
 
@@ -9,7 +10,11 @@ from tests.fakes.fake_training_session_repository import FakeTrainingSessionRepo
 
 @pytest.fixture
 def db_session():
-    engine = create_engine("sqlite:///:memory:")
+    engine = create_engine(
+        "sqlite://",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
     TestingSessionLocal = sessionmaker(bind=engine)
 
     Base.metadata.create_all(bind=engine)
@@ -19,6 +24,22 @@ def db_session():
         yield session
     finally:
         session.close()
+
+@pytest.fixture
+def client(db_session):
+    from src.main import app
+    from src.repositories.db import get_db
+
+    def override_get_db():
+        try:
+            yield db_session
+        finally:
+            pass
+
+    app.dependency_overrides[get_db] = override_get_db
+    with TestClient(app) as client:
+        yield client
+    app.dependency_overrides.clear()
 
 @pytest.fixture
 def weekly_repo():
