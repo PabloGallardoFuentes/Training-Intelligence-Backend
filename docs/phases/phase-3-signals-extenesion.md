@@ -181,3 +181,18 @@ Integración
 - Alertas configurables
 - Persistencia histórica de señales
 ---
+
+
+## Decison sincronía
+El sistema se implementa de forma síncrona.
+Motivos:
+- Dominio CPU-bound
+- Volumen de datos reducido
+- Simplicidad y testabilidad
+- Evitar complejidad prematura
+
+Async se evaluará cuando:
+- haya I/O externo
+- concurrencia real
+- DB remota con latencia
+- batch jobs o colas
