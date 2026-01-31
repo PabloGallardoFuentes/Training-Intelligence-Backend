@@ -3,6 +3,9 @@ from typing import Dict
 
 from src.models.training_session import TrainingSession
 
+def calculate_load(duration_minutes: int, intensity: int) -> int:
+    return duration_minutes * intensity
+
 def calculate_session_load(session: TrainingSession) -> int:
     """
     Calculate the load of a training session based on its duration and intensity.
@@ -13,7 +16,7 @@ def calculate_session_load(session: TrainingSession) -> int:
     Returns:
         int: The calculated load of the session.
     """
-    return session.duration_minutes * session.intensity
+    return calculate_load(session.duration_minutes, session.intensity)
 
 def aggregate_weekly_load(
     sessions: list[TrainingSession]
