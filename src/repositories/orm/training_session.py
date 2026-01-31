@@ -9,7 +9,7 @@ class TrainingSessionORM(Base):
     __tablename__ = "training_session"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    id_user: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    id_user: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
     date: Mapped[Date] = mapped_column(Date)
     sport: Mapped[Sport] = mapped_column(Enum(Sport))

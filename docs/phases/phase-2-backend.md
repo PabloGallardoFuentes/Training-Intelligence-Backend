@@ -108,3 +108,27 @@ Output:
 - total_load: int
 - load_by_sport: dict[sport, int]
 ```
+
+
+# Resumen de algunas decisiones
+**1. Inyección de dependencias**
+
+Aplicada sólo a nivel infraestructura:
+- DB → Depends(get_db)
+- Tests → override de get_db
+
+- No se introduce DI para service/repository todavía (premature abstraction)
+- Incremental: se añadirá cuando haya múltiples implementaciones o consumidores
+
+**2. Filosofia TDD**
+
+**3. Qué NO hay**
+- Recomendaciones automáticas
+- Predicciones de rendimiento
+- Frontend
+- Notas de sesión / completed / planned
+- Variables derivadas en entidad (como load o week)
+
+
+## Estado final de la fase
+✔️ Fase cerrada

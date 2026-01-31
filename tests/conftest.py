@@ -27,7 +27,7 @@ def db_session():
 
 @pytest.fixture
 def client(db_session):
-    from src.main import app
+    from main import app
     from src.repositories.db import get_db
 
     def override_get_db():

@@ -1,7 +1,10 @@
+import logging
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
 from src.repositories.orm.base import Base
+from src.repositories.orm.user import UserORM
+from src.repositories.orm.training_session import TrainingSessionORM
 
 DATABASE_URL = "sqlite:///./dev.db"
 
@@ -21,3 +24,6 @@ def get_db() -> Session:
         yield db
     finally:
         db.close()
+
+if __name__ == "__main__":
+    init_db()

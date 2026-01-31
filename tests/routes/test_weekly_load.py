@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from datetime import date
 
-from src.main import app
+from main import app
 from src.repositories.orm.training_session import TrainingSessionORM
 from src.models.training_session import Sport
 
