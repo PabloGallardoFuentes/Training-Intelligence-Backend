@@ -196,3 +196,30 @@ Async se evaluará cuando:
 - concurrencia real
 - DB remota con latencia
 - batch jobs o colas
+---
+
+**`WeeklySignalsService`**
+
+Un orquestador de señales
+
+El punto donde:
+`sesiones → cargas diarias → cargas semanales → señales`
+
+```text
+WeeklySignalsService
+--------------------
+Input:
+- user_id
+- iso_year
+- iso_week
+
+Output:
+{
+  "week": "2026-W10",
+  "weekly_load": int,
+  "signals": {
+    "monotony": {...},
+    "load_ratio": {...}
+  }
+}
+```
