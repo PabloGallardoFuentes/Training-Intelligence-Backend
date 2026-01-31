@@ -6,6 +6,7 @@ from src.repositories.orm.user import UserORM
 from src.repositories.db import SessionLocal, get_db, init_db
 from src.routes.sessions import router as sessions_router
 from src.routes.weekly_load import router as weekly_load_router
+from src.routes.signals import router as signals_router
 
 
 @asynccontextmanager
@@ -27,3 +28,4 @@ app = FastAPI(title="Training Intelligence Backend", lifespan=lifespan)
 
 app.include_router(sessions_router)
 app.include_router(weekly_load_router)
+app.include_router(signals_router)
